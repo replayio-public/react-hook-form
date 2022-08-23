@@ -44,6 +44,7 @@
     "test:native": "TEST_ENV=native yarn test",
     "tsd": "tsd src/__typetest__",
     "cypress": "cypress run",
+    "cypress:replay": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) cypress run --browser 'Replay Chromium'",
     "cypress:open": "cypress open",
     "api-extractor": "api-extractor run --local",
     "api-extractor:build": "yarn build:esm && yarn api-extractor",
@@ -150,5 +151,8 @@
   "engines": {
     "node": ">=12.22.0"
   },
-  "packageManager": "yarn@1.22.15"
+  "packageManager": "yarn@1.22.15",
+  "dependencies": {
+    "@replayio/cypress": "^0.2.15"
+  }
 }

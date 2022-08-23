@@ -15,4 +15,13 @@ jobs:
         with:
           start: npm run start:app
           wait-on: 'http://localhost:3000'
+          browser: "Replay Chromium"
           wait-on-timeout: 120
+        env:
+          RECORD_ALL_CONTENT: 1
+          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
+      - name: Upload replays
+        if: ${{ always() }}
+        uses: replayio/action-upload@v0.4.3
+        with:
+          api-key: rwk_xxNF2q8coRNanmtYmhmzyvHZM7KQ2VvW8CuMGJwhPUJ
