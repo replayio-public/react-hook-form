@@ -9,7 +9,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       cypressReplay.default(on, config);
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      return require('./cypress/plugins/index.ts')(on, config);
+      return config;
     },
     baseUrl: 'http://localhost:3000/',
   },
