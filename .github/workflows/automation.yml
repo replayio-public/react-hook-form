@@ -32,3 +32,4 @@ jobs:
         uses: replayio/action-upload@v0.4.3
         with:
           api-key: rwk_xxNF2q8coRNanmtYmhmzyvHZM7KQ2VvW8CuMGJwhPUJ
+          public: true
