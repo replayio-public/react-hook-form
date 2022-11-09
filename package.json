@@ -153,6 +153,6 @@
   },
   "packageManager": "yarn@1.22.15",
   "dependencies": {
-    "@replayio/cypress": "^0.3.3"
+    "@replayio/cypress": "^0.3.5"
   }
 }
