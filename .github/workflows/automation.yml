@@ -35,8 +35,11 @@ jobs:
         if: always()
         id: uploadStart
         run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
-      - run: npx replay ls --json
-        if: always()
+      - name: Archive recordings.log
+        uses: actions/upload-artifact@v3
+        with:
+          name: replay-recordings-log
+          path: ~/.replay/recordings.log
       - name: Upload replays
         if: ${{ always() }}
         uses: replayio/action-upload@v0.4.3
