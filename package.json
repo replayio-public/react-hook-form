@@ -45,6 +45,7 @@
     "tsd": "tsd src/__typetest__",
     "cypress": "cypress run",
     "cypress:replay": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) cypress run --browser 'Replay Chromium'",
+    "cypress:replay-custom": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) cypress run --browser",
     "cypress:open": "cypress open",
     "api-extractor": "api-extractor run --local",
     "api-extractor:build": "yarn build:esm && yarn api-extractor",
