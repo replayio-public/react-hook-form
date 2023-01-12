@@ -40,7 +40,7 @@ jobs:
         run: echo "time=`date +%s`" >> $GITHUB_OUTPUT
       - name: Upload replays
         if: ${{ always() }}
-        uses: replayio/action-upload@v0.4.3
+        uses: replayio/action-upload@ryan/scs-614-update-github-actions-to-support
         with:
           api-key: rwk_xxNF2q8coRNanmtYmhmzyvHZM7KQ2VvW8CuMGJwhPUJ
           public: true
