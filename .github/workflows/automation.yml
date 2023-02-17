@@ -18,7 +18,7 @@ jobs:
         with:
           start: npm run start:app
           wait-on: 'http://localhost:3000'
-          browser: "Replay Chromium"
+          browser: replay-chromium
           wait-on-timeout: 120
         env:
           RECORD_ALL_CONTENT: 1
@@ -61,7 +61,7 @@ jobs:
         with:
           start: npm run start:app
           wait-on: 'http://localhost:3000'
-          browser: "Replay Chromium"
+          browser: replay-chromium
           wait-on-timeout: 120
         env:
           RECORD_ALL_CONTENT: 1
