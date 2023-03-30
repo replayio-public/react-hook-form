@@ -4,6 +4,8 @@ on:
     - cron: '0 0 * * *'
   push:
   workflow_dispatch:
+env:
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230330-02db01713167-7715d3a69a26.tar.xz
 
 jobs:
   record:
