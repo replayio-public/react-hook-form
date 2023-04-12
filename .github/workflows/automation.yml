@@ -1,5 +1,5 @@
 name: E2E Test
-on: 
+on:
   schedule:
     - cron: '0 0 * * *'
   push:
@@ -25,6 +25,7 @@ jobs:
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           RECORD_REPLAY_TEST_METRICS: 1
           RECORD_REPLAY_WEBHOOK_URL: ${{ secrets.RECORD_REPLAY_WEBHOOK_URL }}
+          RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20230412-f7ac8e276559-4857f15a9288.tar.xz
           # These two are here to help with measuring the true overhead by disabling diagnostics
           RECORD_REPLAY_DISABLE_ASSERTS: 1
           RECORD_REPLAY_DISABLE_SOURCEMAP_COLLECTION: 1
@@ -47,7 +48,7 @@ jobs:
       - name: Set duration in output
         if: always()
         id: end
-        run: | 
+        run: |
           echo "recordDuration=${{fromJson(steps.set_var.outputs.duration)}}" >> $GITHUB_OUTPUT
           echo "uploadDuration=$(((`date +%s` - ${{ steps.uploadStart.outputs.time }}) * 1000))" >> $GITHUB_OUTPUT
   no-record:
@@ -120,5 +121,5 @@ jobs:
         # Don't upload metrics for pull requests, so our stats are clean
         if: ${{ github.ref_name == 'master' }}
         with:
-          endpoint: "https://telemetry.replay.io"
+          endpoint: 'https://telemetry.replay.io'
           configuration: '{ "method": "POST", "body": {"event": "Webhook", "source": "metrics", "name": "action-finished-2", "project": "react-hook-form", "originalDuration": "${{ needs.original.outputs.originalDuration }}", "recordDuration": "${{ needs.record.outputs.recordDuration }}", "noRecordDuration": "${{ needs.no-record.outputs.noRecordDuration }}", "uploadDuration": "${{ needs.record.outputs.uploadDuration }}"} }'
