@@ -17,12 +17,13 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
+          command: npx @replayio/cypress run --timeout 600000 --browser replay-chromium
           start: npm run start:app
           wait-on: 'http://localhost:3000'
-          browser: replay-chromium
           wait-on-timeout: 120
         env:
-          DEBUG: replay:cypress*
+          DEBUG: replay:cypress*,cypress:launcher:browsers
+          RECORD_REPLAY_VERBOSE: 1
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
           RECORD_REPLAY_TEST_METRICS: 1
