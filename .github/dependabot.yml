@@ -8,3 +8,4 @@ updates:
       interval: "daily"
     allow:
       - dependency-name: "@replayio/*"
+      - dependency-type: direct
