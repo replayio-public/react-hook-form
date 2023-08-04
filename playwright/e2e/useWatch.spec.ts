@@ -1,7 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('useWatch', () => {
-  test('should only trigger render when interact with input 1', async ({ page }) => {
+  test('should only trigger render when interact with input 1', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/useWatch');
     await page.locator('input[name="test"]').fill('t');
 
@@ -19,7 +21,9 @@ test.describe('useWatch', () => {
     await expect(page.locator('#grandchild2')).toHaveText('t');
   });
 
-  test('should only trigger render when interact with input 2', async ({ page }) => {
+  test('should only trigger render when interact with input 2', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/useWatch');
     await page.locator('input[name="test1"]').fill('h');
 
@@ -37,7 +41,9 @@ test.describe('useWatch', () => {
     await expect(page.locator('#grandchild2')).toHaveText('hhh');
   });
 
-  test('should only trigger render when interact with input 3', async ({ page }) => {
+  test('should only trigger render when interact with input 3', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/useWatch');
     await page.locator('input[name="test2"]').fill('e');
 

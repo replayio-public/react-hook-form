@@ -1,7 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('useFormState', () => {
-  test('should subscribed to the form state without re-render the root', async ({ page }) => {
+  test('should subscribed to the form state without re-render the root', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/useFormState');
     await page.locator('button#submit').click();
 

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('controller basic form validation', () => {
   test('should validate the form and reset the form', async ({ page }) => {
@@ -25,7 +25,9 @@ test.describe('controller basic form validation', () => {
     await expect(page.locator('#renderCount')).toContainText('8');
   });
 
-  test('should validate the form with onBlur mode and reset the form', async ({ page }) => {
+  test('should validate the form with onBlur mode and reset the form', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/controller/onBlur');
 
     await expect(page.locator('p')).toHaveCount(0);
@@ -56,7 +58,9 @@ test.describe('controller basic form validation', () => {
     await expect(page.locator('#renderCount')).toContainText('9');
   });
 
-  test('should validate the form with onChange mode and reset the form', async ({ page }) => {
+  test('should validate the form with onChange mode and reset the form', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/controller/onChange');
 
     await page.locator('#input-checkbox input').click();

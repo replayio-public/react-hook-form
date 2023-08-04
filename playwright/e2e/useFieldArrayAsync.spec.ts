@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('useFieldArray', () => {
   test('should behaviour correctly without defaultValues', async ({ page }) => {
@@ -8,13 +8,17 @@ test.describe('useFieldArray', () => {
 
     await expect(page.locator(':focus')).toHaveAttribute('id', 'field0');
 
-    await expect(page.locator('ul > li').nth(0).locator('input')).toHaveValue('appendAsync');
+    await expect(page.locator('ul > li').nth(0).locator('input')).toHaveValue(
+      'appendAsync',
+    );
 
     await expect(page.locator(':focus')).toHaveAttribute('id', 'field0');
 
     await page.locator('#prependAsync').click();
 
-    await expect(page.locator('ul > li').nth(0).locator('input')).toHaveValue('prependAsync');
+    await expect(page.locator('ul > li').nth(0).locator('input')).toHaveValue(
+      'prependAsync',
+    );
 
     await page.locator('#insertAsync').click();
 

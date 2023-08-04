@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('form trigger', () => {
   test('should trigger input validation', async ({ page }) => {
