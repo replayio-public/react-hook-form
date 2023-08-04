@@ -22,7 +22,7 @@ test.describe('form setFocus', () => {
     await expect(page.locator('textarea[name="focusTextarea"]')).toHaveFocus();
   });
 
-  test('should select input content2', async ({ page }) => {
+  test('should select input content1', async ({ page }) => {
     await page.goto('http://localhost:3000/setFocus');
     await page.locator('button:text("Select Textarea Content")').click();
     await page
