@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test.describe('controller basic form validation', () => {
   test('should validate the form and reset the form', async ({ page }) => {
@@ -14,7 +14,7 @@ test.describe('controller basic form validation', () => {
 
     await page.locator('#input-checkbox input').click();
     await page.locator('input[name="gender1"]').first().click();
-    await page.locator('#input-textField input').type('test');
+    await page.locator('#input-textField input').fill('test');
     await page.locator('#input-select > div > div').click();
     await page.locator('.MuiPopover-root ul > li:first-child').click();
     await page.locator('#input-switch input').click();
@@ -25,9 +25,7 @@ test.describe('controller basic form validation', () => {
     await expect(page.locator('#renderCount')).toContainText('8');
   });
 
-  test('should validate the form with onBlur mode and reset the form', async ({
-    page,
-  }) => {
+  test('should validate the form with onBlur mode and reset the form', async ({ page }) => {
     await page.goto('http://localhost:3000/controller/onBlur');
 
     await expect(page.locator('p')).toHaveCount(0);
@@ -48,7 +46,7 @@ test.describe('controller basic form validation', () => {
     await expect(page.locator('#switch')).toContainText('switch Error');
 
     await page.locator('#input-checkbox input').click();
-    await page.locator('#input-textField input').type('test');
+    await page.locator('#input-textField input').fill('test');
     await page.locator('#input-select > div > div').click();
     await page.locator('.MuiPopover-root ul > li:first-child').click();
     await page.locator('#input-switch input').click();
@@ -58,16 +56,14 @@ test.describe('controller basic form validation', () => {
     await expect(page.locator('#renderCount')).toContainText('9');
   });
 
-  test('should validate the form with onChange mode and reset the form', async ({
-    page,
-  }) => {
+  test('should validate the form with onChange mode and reset the form', async ({ page }) => {
     await page.goto('http://localhost:3000/controller/onChange');
 
     await page.locator('#input-checkbox input').click();
     await page.locator('#input-checkbox input').click();
     await expect(page.locator('#Checkbox')).toContainText('Checkbox Error');
 
-    await page.locator('#input-textField input').type('test');
+    await page.locator('#input-textField input').fill('test');
     await page.locator('#input-textField input').clear();
     await expect(page.locator('#TextField')).toContainText('TextField Error');
 
@@ -76,7 +72,7 @@ test.describe('controller basic form validation', () => {
     await expect(page.locator('#switch')).toContainText('switch Error');
 
     await page.locator('#input-checkbox input').click();
-    await page.locator('#input-textField input').type('test');
+    await page.locator('#input-textField input').fill('test');
     await page.locator('#input-switch input').click();
 
     await expect(page.locator('p')).toHaveCount(0);

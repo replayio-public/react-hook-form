@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-
 test.describe('form reset', () => {
   test('should be able to re-populate the form while reset', async ({
     page,

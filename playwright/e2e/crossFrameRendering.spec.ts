@@ -1,22 +1,18 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 async function getIframe(page) {
-  const iframeElement = await page.locator('iframe');
-  const iframe = await iframeElement.contentFrame();
-  return iframe;
+  const frameElement = await page.locator('iframe');
+  const frame = await frameElement.contentFrame();
+  return frame;
 }
 
 test.describe('Cross-Frame rendering', () => {
-  test('should work correctly when rendering inside frames', async ({
-    page,
-  }) => {
+  test('should work correctly when rendering inside frames', async ({ page }) => {
     await page.goto('http://localhost:3000/crossFrameForm');
-    const iframe = await getIframe(page);
-    await iframe.locator('input[type="text"]').fill('test');
-    await iframe.locator('input[type="radio"][value="a"]').click();
-    await iframe.locator('input[type="radio"][value="b"]').click();
-    await expect(iframe.locator('pre')).toHaveText(
-      '{"input":"test","radio":"b"}',
-    );
+    const frame = await getIframe(page);
+    await frame.locator('input[type="text"]').fill('test');
+    await frame.locator('input[type="radio"][value="a"]').click();
+    await frame.locator('input[type="radio"][value="b"]').click();
+    await expect(frame.locator('pre')).toHaveText('{"input":"test","radio":"b"}');
   });
 });

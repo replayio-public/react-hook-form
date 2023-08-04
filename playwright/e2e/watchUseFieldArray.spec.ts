@@ -1,21 +1,17 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test.describe('watchUseFieldArray', () => {
-  test('should behaviour correctly when watching the field array', async ({
-    page,
-  }) => {
+  test('should behaviour correctly when watching the field array', async ({ page }) => {
     await page.goto('http://localhost:3000/watch-field-array/normal');
 
     await page.locator('#append').click();
     await expect(page.locator('#result')).toContainText('[{"name":"2"}]');
 
-    await page.locator('#field0').fill('test');
+    await page.locator('#field0').type('test');
     await expect(page.locator('#result')).toContainText('[{"name":"2test"}]');
 
     await page.locator('#prepend').click();
-    await expect(page.locator('#result')).toContainText(
-      '[{"name":"8"},{"name":"2test"}]',
-    );
+    await expect(page.locator('#result')).toContainText('[{"name":"8"},{"name":"2test"}]');
 
     await page.locator('#append').click();
     await page.locator('#append').click();
@@ -50,9 +46,7 @@ test.describe('watchUseFieldArray', () => {
     await expect(page.locator('#renderCount')).toContainText('28');
   });
 
-  test('should return empty when items been removed and defaultValues are supplied', async ({
-    page,
-  }) => {
+  test('should return empty when items been removed and defaultValues are supplied', async ({ page }) => {
     await page.goto('http://localhost:3000/watch-field-array/default');
 
     await page.locator('#delete0').click();

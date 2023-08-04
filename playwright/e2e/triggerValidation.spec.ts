@@ -1,5 +1,4 @@
 import { expect, test } from '@playwright/test';
-
 test.describe('form trigger', () => {
   test('should trigger input validation', async ({ page }) => {
     await page.goto('http://localhost:3000/trigger-validation');

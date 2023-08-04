@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test.describe('useFieldArrayNested', () => {
   test('should work correctly with nested field array', async ({ page }) => {
@@ -10,30 +10,16 @@ test.describe('useFieldArrayNested', () => {
     await page.locator('#nest-swap-0').click();
     await page.locator('#nest-move-0').click();
 
-    await expect(
-      page.locator('input[name="test.0.keyValue.0.name"]'),
-    ).toHaveValue('insert');
-    await expect(
-      page.locator('input[name="test.0.keyValue.1.name"]'),
-    ).toHaveValue('prepend');
-    await expect(
-      page.locator('input[name="test.0.keyValue.2.name"]'),
-    ).toHaveValue('1a');
-    await expect(
-      page.locator('input[name="test.0.keyValue.3.name"]'),
-    ).toHaveValue('1c');
-    await expect(
-      page.locator('input[name="test.0.keyValue.4.name"]'),
-    ).toHaveValue('append');
+    await expect(page.locator('input[name="test.0.keyValue.0.name"]')).toHaveValue('insert');
+    await expect(page.locator('input[name="test.0.keyValue.1.name"]')).toHaveValue('prepend');
+    await expect(page.locator('input[name="test.0.keyValue.2.name"]')).toHaveValue('1a');
+    await expect(page.locator('input[name="test.0.keyValue.3.name"]')).toHaveValue('1c');
+    await expect(page.locator('input[name="test.0.keyValue.4.name"]')).toHaveValue('append');
 
     await page.locator('#nest-remove-0').click();
-    await expect(
-      page.locator('input[name="test.0.keyValue.2.name"]'),
-    ).toHaveValue('1c');
-    await expect(
-      page.locator('input[name="test.0.keyValue.3.name"]'),
-    ).toHaveValue('append');
+    await expect(page.locator('input[name="test.0.keyValue.2.name"]')).toHaveValue('1c');
+    await expect(page.locator('input[name="test.0.keyValue.3.name"]')).toHaveValue('append');
 
-    // ... continue converting the rest of the test steps
+    // ... continue converting the rest of the test commands to Playwright
   });
 });

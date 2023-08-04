@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test.describe('delayError', () => {
   test('should delay from errors appear', async ({ page }) => {
