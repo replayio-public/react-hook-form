@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('form setError', () => {
   test('should contain 3 errors when page land', async ({ page }) => {

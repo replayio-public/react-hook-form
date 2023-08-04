@@ -1,7 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('setValue with react native or web', () => {
-  test('should only trigger re-render when form state changed or error triggered', async ({ page }) => {
+  test('should only trigger re-render when form state changed or error triggered', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/setValueCustomRegister');
     await expect(page.locator('#dirty')).toHaveText('false');
     await page.locator('#TriggerDirty').click();

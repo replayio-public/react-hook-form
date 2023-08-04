@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('basicSchemaValidation form validation', () => {
   test('should validate the form with onSubmit mode', async ({ page }) => {
@@ -6,11 +6,21 @@ test.describe('basicSchemaValidation form validation', () => {
     await page.locator('button').click();
 
     await expect(page.locator('input[name="firstName"]')).toHaveFocus();
-    await expect(page.locator('input[name="firstName"] + p')).toContainText('firstName error');
-    await expect(page.locator('input[name="lastName"] + p')).toContainText('lastName error');
-    await expect(page.locator('select[name="selectNumber"] + p')).toContainText('selectNumber error');
-    await expect(page.locator('input[name="minRequiredLength"] + p')).toContainText('minRequiredLength error');
-    await expect(page.locator('input[name="radio"] + p')).toContainText('radio error');
+    await expect(page.locator('input[name="firstName"] + p')).toContainText(
+      'firstName error',
+    );
+    await expect(page.locator('input[name="lastName"] + p')).toContainText(
+      'lastName error',
+    );
+    await expect(page.locator('select[name="selectNumber"] + p')).toContainText(
+      'selectNumber error',
+    );
+    await expect(
+      page.locator('input[name="minRequiredLength"] + p'),
+    ).toContainText('minRequiredLength error');
+    await expect(page.locator('input[name="radio"] + p')).toContainText(
+      'radio error',
+    );
 
     await page.locator('input[name="firstName"]').fill('bill');
     await page.locator('input[name="lastName"]').fill('luo123456');
@@ -22,12 +32,24 @@ test.describe('basicSchemaValidation form validation', () => {
     await page.locator('input[name="maxDate"]').fill('2019-08-02');
     await page.locator('input[name="lastName"]').fill('luo');
     await page.locator('input[name="minLength"]').fill('b');
-    await expect(page.locator('input[name="minLength"] + p')).toContainText('minLength error');
-    await expect(page.locator('input[name="pattern"] + p')).toContainText('pattern error');
-    await expect(page.locator('input[name="min"] + p')).toContainText('min error');
-    await expect(page.locator('input[name="max"] + p')).toContainText('max error');
-    await expect(page.locator('input[name="minDate"] + p')).toContainText('minDate error');
-    await expect(page.locator('input[name="maxDate"] + p')).toContainText('maxDate error');
+    await expect(page.locator('input[name="minLength"] + p')).toContainText(
+      'minLength error',
+    );
+    await expect(page.locator('input[name="pattern"] + p')).toContainText(
+      'pattern error',
+    );
+    await expect(page.locator('input[name="min"] + p')).toContainText(
+      'min error',
+    );
+    await expect(page.locator('input[name="max"] + p')).toContainText(
+      'max error',
+    );
+    await expect(page.locator('input[name="minDate"] + p')).toContainText(
+      'minDate error',
+    );
+    await expect(page.locator('input[name="maxDate"] + p')).toContainText(
+      'maxDate error',
+    );
 
     await page.locator('input[name="pattern"]').fill('23');
     await page.locator('input[name="minLength"]').fill('bi');
@@ -48,17 +70,25 @@ test.describe('basicSchemaValidation form validation', () => {
 
     await page.locator('input[name="firstName"]').click();
     await page.locator('input[name="firstName"]').press('Tab');
-    await expect(page.locator('input[name="firstName"] + p')).toContainText('firstName error');
+    await expect(page.locator('input[name="firstName"] + p')).toContainText(
+      'firstName error',
+    );
     await page.locator('input[name="firstName"]').fill('bill');
     await page.locator('input[name="lastName"]').click();
     await page.locator('input[name="lastName"]').press('Tab');
-    await expect(page.locator('input[name="lastName"] + p')).toContainText('lastName error');
+    await expect(page.locator('input[name="lastName"] + p')).toContainText(
+      'lastName error',
+    );
     await page.locator('input[name="lastName"]').fill('luo123456');
     await page.locator('input[name="lastName"]').press('Tab');
-    await expect(page.locator('input[name="lastName"] + p')).toContainText('lastName error');
+    await expect(page.locator('input[name="lastName"] + p')).toContainText(
+      'lastName error',
+    );
     await page.locator('select[name="selectNumber"]').click();
     await page.locator('select[name="selectNumber"]').press('Tab');
-    await expect(page.locator('select[name="selectNumber"] + p')).toContainText('selectNumber error');
+    await expect(page.locator('select[name="selectNumber"] + p')).toContainText(
+      'selectNumber error',
+    );
     await page.locator('select[name="selectNumber"]').selectOption('1');
     await page.locator('input[name="pattern"]').fill('luo');
     await page.locator('input[name="min"]').fill('1');
@@ -69,19 +99,33 @@ test.describe('basicSchemaValidation form validation', () => {
     await page.locator('input[name="minLength"]').fill('b');
     await page.locator('input[name="minLength"]').press('Tab');
 
-    await expect(page.locator('input[name="pattern"] + p')).toContainText('pattern error');
-    await expect(page.locator('input[name="minLength"] + p')).toContainText('minLength error');
-    await expect(page.locator('input[name="min"] + p')).toContainText('min error');
-    await expect(page.locator('input[name="max"] + p')).toContainText('max error');
-    await expect(page.locator('input[name="minDate"] + p')).toContainText('minDate error');
-    await expect(page.locator('input[name="maxDate"] + p')).toContainText('maxDate error');
+    await expect(page.locator('input[name="pattern"] + p')).toContainText(
+      'pattern error',
+    );
+    await expect(page.locator('input[name="minLength"] + p')).toContainText(
+      'minLength error',
+    );
+    await expect(page.locator('input[name="min"] + p')).toContainText(
+      'min error',
+    );
+    await expect(page.locator('input[name="max"] + p')).toContainText(
+      'max error',
+    );
+    await expect(page.locator('input[name="minDate"] + p')).toContainText(
+      'minDate error',
+    );
+    await expect(page.locator('input[name="maxDate"] + p')).toContainText(
+      'maxDate error',
+    );
 
     await page.locator('input[name="pattern"]').fill('23');
     await page.locator('input[name="minLength"]').fill('bi');
     await page.locator('input[name="minRequiredLength"]').fill('bi');
     await page.locator('input[name="radio"]').first().click();
     await page.locator('input[name="radio"]').first().press('Tab');
-    await expect(page.locator('input[name="radio"] + p')).toContainText('radio error');
+    await expect(page.locator('input[name="radio"] + p')).toContainText(
+      'radio error',
+    );
     await page.locator('input[name="radio"]').check('1');
     await page.locator('input[name="min"]').fill('11');
     await page.locator('input[name="max"]').fill('19');
@@ -100,12 +144,18 @@ test.describe('basicSchemaValidation form validation', () => {
     await page.locator('input[name="lastName"]').click();
     await page.locator('input[name="lastName"]').fill('luo123456');
     await page.locator('input[name="lastName"]').fill('');
-    await expect(page.locator('input[name="lastName"] + p')).toContainText('lastName error');
+    await expect(page.locator('input[name="lastName"] + p')).toContainText(
+      'lastName error',
+    );
     await page.locator('input[name="lastName"]').fill('luo123456');
-    await expect(page.locator('input[name="lastName"] + p')).toContainText('lastName error');
+    await expect(page.locator('input[name="lastName"] + p')).toContainText(
+      'lastName error',
+    );
     await page.locator('select[name="selectNumber"]').selectOption('1');
     await page.locator('select[name="selectNumber"]').selectOption('');
-    await expect(page.locator('select[name="selectNumber"] + p')).toContainText('selectNumber error');
+    await expect(page.locator('select[name="selectNumber"] + p')).toContainText(
+      'selectNumber error',
+    );
     await page.locator('select[name="selectNumber"]').selectOption('1');
     await page.locator('input[name="pattern"]').fill('luo');
     await page.locator('input[name="min"]').fill('1');
@@ -115,12 +165,24 @@ test.describe('basicSchemaValidation form validation', () => {
     await page.locator('input[name="lastName"]').fill('luo');
     await page.locator('input[name="minLength"]').fill('b');
 
-    await expect(page.locator('input[name="pattern"] + p')).toContainText('pattern error');
-    await expect(page.locator('input[name="minLength"] + p')).toContainText('minLength error');
-    await expect(page.locator('input[name="min"] + p')).toContainText('min error');
-    await expect(page.locator('input[name="max"] + p')).toContainText('max error');
-    await expect(page.locator('input[name="minDate"] + p')).toContainText('minDate error');
-    await expect(page.locator('input[name="maxDate"] + p')).toContainText('maxDate error');
+    await expect(page.locator('input[name="pattern"] + p')).toContainText(
+      'pattern error',
+    );
+    await expect(page.locator('input[name="minLength"] + p')).toContainText(
+      'minLength error',
+    );
+    await expect(page.locator('input[name="min"] + p')).toContainText(
+      'min error',
+    );
+    await expect(page.locator('input[name="max"] + p')).toContainText(
+      'max error',
+    );
+    await expect(page.locator('input[name="minDate"] + p')).toContainText(
+      'minDate error',
+    );
+    await expect(page.locator('input[name="maxDate"] + p')).toContainText(
+      'maxDate error',
+    );
 
     await page.locator('input[name="pattern"]').fill('23');
     await page.locator('input[name="minLength"]').fill('bi');

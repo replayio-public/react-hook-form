@@ -1,7 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('ConditionalField', () => {
-  test('should reflect correct form state and data collection', async ({ page }) => {
+  test('should reflect correct form state and data collection', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/conditionalField');
     const state = await page.locator('#state').textContent();
     expect(JSON.parse(state)).toStrictEqual({

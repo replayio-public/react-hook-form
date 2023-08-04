@@ -1,7 +1,9 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('form state with nested fields', () => {
-  test('should return correct form state with onSubmit mode', async ({ page }) => {
+  test('should return correct form state with onSubmit mode', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/formStateWithNestedFields/onSubmit');
 
     const state = JSON.parse(await page.textContent('#state'));

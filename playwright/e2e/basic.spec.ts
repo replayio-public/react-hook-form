@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
 test.describe('basic form validation', () => {
   test('should validate the form and reset the form', async ({ page }) => {
@@ -16,12 +16,16 @@ test.describe('basic form validation', () => {
     // ... rest of the test code
   });
 
-  test('should validate the form with onBlur mode and reset the form', async ({ page }) => {
+  test('should validate the form with onBlur mode and reset the form', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/basic/onBlur');
     // ... rest of the test code
   });
 
-  test('should validate the form with onChange mode and reset the form', async ({ page }) => {
+  test('should validate the form with onChange mode and reset the form', async ({
+    page,
+  }) => {
     await page.goto('http://localhost:3000/basic/onChange');
     // ... rest of the test code
   });

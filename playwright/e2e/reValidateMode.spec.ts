@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+
 test.describe('re-validate mode', () => {
   test('should re-validate the form only onSubmit with mode onSubmit and reValidateMode onSubmit', async ({
     page,

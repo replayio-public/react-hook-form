@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('form setValueAsyncStrictMode', () => {
   test('should set async input value correctly', async ({ page }) => {
