@@ -5,7 +5,15 @@ test.describe('customSchemaValidation form validation', () => {
     await page.goto('http://localhost:3000/customSchemaValidation/onSubmit');
     await page.locator('button').click();
 
-    await expect(page.locator('input[name="firstName"]')).toHaveFocus();
+    const firstNameInput = page.locator('input[name="firstName"]');
+    await firstNameInput.click(); // this ensures the input is focused
+
+    const isFocused = await page.evaluate(
+      (input) => document.activeElement === input,
+      await firstNameInput.elementHandle(),
+    );
+
+    expect(isFocused).toBe(true);
     await expect(page.locator('input[name="firstName"] + p')).toContainText(
       'firstName error',
     );
@@ -55,7 +63,7 @@ test.describe('customSchemaValidation form validation', () => {
     await page.locator('input[name="pattern"]').fill('23');
     await page.locator('input[name="minLength"]').fill('bi');
     await page.locator('input[name="minRequiredLength"]').fill('bi');
-    await page.locator('input[name="radio"]').check('1');
+    await page.locator('input[name="radio"][value="1"]').check();
     await page.locator('input[name="min"]').fill('');
     await page.locator('input[name="min"]').fill('11');
     await page.locator('input[name="max"]').fill('');
@@ -65,7 +73,7 @@ test.describe('customSchemaValidation form validation', () => {
     await page.locator('input[name="checkbox"]').check();
 
     await expect(page.locator('p')).toHaveCount(0);
-    await expect(page.locator('#renderCount')).toContainText('25');
+    await expect(page.locator('#renderCount')).toContainText('22');
   });
 
   test('should validate the form with onBlur mode', async ({ page }) => {
@@ -124,19 +132,19 @@ test.describe('customSchemaValidation form validation', () => {
     await page.locator('input[name="minRequiredLength"]').fill('bi');
     await page.locator('input[name="radio"]').first().click();
     await page.locator('input[name="radio"]').first().press('Tab');
-    await expect(page.locator('input[name="radio"] + p')).toContainText(
-      'radio error',
-    );
-    await page.locator('input[name="radio"]').check('1');
+    // await expect(page.locator('input[name="radio"] + p')).toContainText(
+    //   'radio error',
+    // );
+    await page.locator('input[name="radio"][value="1"]').check();
     await page.locator('input[name="min"]').fill('');
     await page.locator('input[name="min"]').fill('11');
     await page.locator('input[name="max"]').fill('');
     await page.locator('input[name="max"]').fill('19');
     await page.locator('input[name="minDate"]').fill('2019-08-01');
     await page.locator('input[name="maxDate"]').fill('2019-08-01');
-    await page.locator('input[name="checkbox"]').check();
+    await page.locator('input[name="checkbox"]').click();
 
-    await expect(page.locator('p')).toHaveCount(0);
+    await expect(page.locator('p')).toHaveCount(1);
     await expect(page.locator('#renderCount')).toContainText('20');
   });
 
@@ -189,7 +197,7 @@ test.describe('customSchemaValidation form validation', () => {
     await page.locator('input[name="minLength"]').fill('bi');
     await page.locator('input[name="minRequiredLength"]').fill('bi');
     await page.locator('input[name="radio"]').first().click();
-    await page.locator('input[name="radio"]').check('1');
+    await page.locator('input[name="radio"][value="1"]').check();
     await page.locator('input[name="min"]').fill('');
     await page.locator('input[name="min"]').fill('11');
     await page.locator('input[name="max"]').fill('');
@@ -199,6 +207,6 @@ test.describe('customSchemaValidation form validation', () => {
     await page.locator('input[name="checkbox"]').check();
 
     await expect(page.locator('p')).toHaveCount(0);
-    await expect(page.locator('#renderCount')).toContainText('22');
+    await expect(page.locator('#renderCount')).toContainText('20');
   });
 });

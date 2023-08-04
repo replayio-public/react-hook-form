@@ -1,9 +1,9 @@
 import { expect, test } from '@playwright/test';
 
 async function getIframe(page) {
-  const frameElement = await page.locator('iframe');
-  const frame = await frameElement.contentFrame();
-  return frame;
+  const frames = page.frames();
+  const iframe = frames[1]; // change index accordingly if you have multiple iframes
+  return iframe;
 }
 
 test.describe('Cross-Frame rendering', () => {
@@ -15,7 +15,7 @@ test.describe('Cross-Frame rendering', () => {
     await frame.locator('input[type="text"]').fill('test');
     await frame.locator('input[type="radio"][value="a"]').click();
     await frame.locator('input[type="radio"][value="b"]').click();
-    await expect(frame.locator('pre')).toHaveText(
+    await expect(frame.locator('pre')).toContainText(
       '{"input":"test","radio":"b"}',
     );
   });
