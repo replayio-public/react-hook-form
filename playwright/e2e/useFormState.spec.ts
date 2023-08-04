@@ -10,7 +10,7 @@ test.describe('useFormState', () => {
     await page.locator('input[name="arrayItem.0.test1"]').fill('ab');
     await page.locator('input[name="nestItem.nest1"]').fill('ab');
     await page.locator('input[name="lastName"]').fill('luo123456');
-    await page.selectOption('select[name="selectNumber"]', '1');
+    await page.locator('select[name="selectNumber"]').selectOption('1');
     await page.locator('input[name="pattern"]').fill('luo');
     await page.locator('input[name="min"]').fill('1');
     await page.locator('input[name="max"]').fill('21');
@@ -29,6 +29,7 @@ test.describe('useFormState', () => {
         'firstName',
         'arrayItem',
         'lastName',
+        'selectNumber',
         'pattern',
         'min',
         'max',
@@ -73,6 +74,7 @@ test.describe('useFormState', () => {
         'firstName',
         'arrayItem',
         'lastName',
+        'selectNumber',
         'pattern',
         'min',
         'max',
@@ -111,6 +113,7 @@ test.describe('useFormState', () => {
         'firstName',
         'arrayItem',
         'lastName',
+        'selectNumber',
         'pattern',
         'min',
         'max',
