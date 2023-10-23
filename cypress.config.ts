@@ -8,7 +8,11 @@ export default defineConfig({
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
-      cypressReplay.default(on, config);
+      on = cypressReplay.wrapOn(on);
+      cypressReplay.default(on, config, {
+        upload: true,
+        apiKey: process.env.REPLAY_API_KEY,
+      });
       on('after:run', (afterRun: any) => {
         const data = JSON.stringify(afterRun.totalDuration);
         const filename = 'duration.json';
