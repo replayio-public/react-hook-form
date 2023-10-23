@@ -17,8 +17,8 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
-          command: npx @replayio/cypress run --timeout 600000 --browser replay-chromium
           start: npm run start:app
+          browser: replay-chromium
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
         env:
